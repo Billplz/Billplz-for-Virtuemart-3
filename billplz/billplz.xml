@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension version="2.5" type="plugin" group="vmpayment" method="upgrade">
+    <name>Billplz. Fair Payment Software</name>
+    <creationDate>September 16 2017</creationDate>
+    <author>Wan Zulkarnain</author>
+    <authorUrl>http://billplz.com</authorUrl>
+    <copyright>Copyright (C) 2015 - 2017 Billplz. All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
+    <version>3.0</version>
+    <description>Billplz. Accept Major Internet Banking Payments using Billplz.</description>
+
+    <files>
+        <filename plugin="billplz">billplz.php</filename>
+        <folder>language</folder>
+    </files>
+
+    <vmconfig>
+        <fields name="params">
+            <fieldset name="basic" addfieldpath="/plugins/vmpayment/billplz/billplz/fields">
+				
+                <!-- Note: Billplz production merchant setting -->
+                <field type="vmtitle" default="VMPAYMENT_BILLPLZ_LIVE_PARAMS" level="level1"/>
+                <field name="billplz_api_key" type="text" size="50" default="" label="VMPAYMENT_BILLPLZ_API_KEY" description="VMPAYMENT_BILLPLZ_API_KEY_DESC"/>
+                <field name="billplz_collection_id" type="text" size="70" default="" label="VMPAYMENT_BILLPLZ_COLLECTION_ID" description="VMPAYMENT_BILLPLZ_COLLECTION_ID_DESC"/>
+                <field name="billplz_x_signature" type="text" size="70" default="" label="VMPAYMENT_BILLPLZ_X_SIGNATURE" description="VMPAYMENT_BILLPLZ_X_SIGNATURE_DESC"/>
+                <field name="billplz_deliver" type="list" default="0" label="VMPAYMENT_BILLPLZ_DELIVER"
+                       description="VMPAYMENT_BILLPLZ_DELIVER_DESC">
+                    <option value="0">VMPAYMENT_BILLPLZ_NO_DELIVER</option>
+                    <option value="1">VMPAYMENT_BILLPLZ_EMAIL_DELIVER</option>
+                    <option value="2">VMPAYMENT_BILLPLZ_MOBILE_DELIVER</option>
+                    <option value="3">VMPAYMENT_BILLPLZ_BOTH_DELIVER</option>
+                </field>
+                
+                <!-- Note: Shopping cart transaction status mapping -->
+                <field type="vmtitle" default="VMPAYMENT_BILLPLZ_ORDER_STATUS_PARAMS" level="level1"/>
+                <field name="status_success" type="vmorderstate" scope="com_virtuemart" default="C" 
+                       label="VMPAYMENT_BILLPLZ_ORDERSTATUS_APPROVED" description="VMPAYMENT_BILLPLZ_ORDERSTATUS_SUCCESS_DESC"/>
+                <field name="status_canceled" type="vmorderstate" scope="com_virtuemart" default="X"
+                       label="VMPAYMENT_BILLPLZ_ORDERSTATUS_DECLINED" description="VMPAYMENT_BILLPLZ_ORDERSTATUS_INVALID_DESC"/>
+                <field name="status_pending" type="vmorderstate" scope="com_virtuemart" default="P"
+                       label="VMPAYMENT_BILLPLZ_ORDERSTATUS_HELD" description="VMPAYMENT_BILLPLZ_ORDERSTATUS_HELD_DESC"/>
+
+                <!-- Note: Optional parameters -->
+                <field type="vmtitle" default="VMPAYMENT_BILLPLZ_OPTION_PARAMS" level="level1"/>
+                <field name="countries" type="vmcountries" scope="com_virtuemart" default=""
+                       label="VMPAYMENT_BILLPLZ_COUNTRIES_DESC" description="VMPAYMENT_BILLPLZ_COUNTRIES_DESC"/>
+                <field name="min_amount" type="text" default="1.01" label="VMPAYMENT_BILLPLZ_MIN_AMOUNT" description="VMPAYMENT_BILLPLZ_MIN_AMOUNT_DESC"/>
+                <field name="max_amount" type="text" default="50000.00" label="VMPAYMENT_BILLPLZ_MAX_AMOUNT" description="VMPAYMENT_BILLPLZ_MAX_AMOUNT_DESC"/>
+
+            </fieldset>
+        </fields>
+    </vmconfig>
+
+</extension>
