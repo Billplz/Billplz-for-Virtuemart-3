@@ -10,6 +10,7 @@
     <description>Billplz. Accept Major Internet Banking Payments using Billplz.</description>
 
     <files>
+	<filename plugin="billplz">billplz-api.php</filename>
         <filename plugin="billplz">billplz.php</filename>
         <folder>language</folder>
     </files>
